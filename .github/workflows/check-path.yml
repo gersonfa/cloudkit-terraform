@@ -1,0 +1,25 @@
+name: check terraform files
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check_files:
+    steps:
+
+      - name: Get specific changed files
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v1.0.2
+        with:
+          files: |
+            modules/module1
+            modules/module2
+            modules/module3
+
+      - name: List all modified/added files
+        run: |
+          for file in "${{ steps.changed-files.outputs.all_modified_files }}"; do
+            echo "$file was added"
+          done
