@@ -9,16 +9,18 @@ jobs:
   check_files:
     runs-on: ubuntu-latest
     outputs:
-      changed_modules: ${{ steps.changed_files.outputs.changed_modules }}
-      changed_modules2: ${{ steps.changed_files.outputs.changed_modules2 }}
+      matrix: ${{ steps.changed_files.outputs.matrix }}
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Get specific changed files
         id: changed-files
         uses: tj-actions/changed-files@v1.0.2
         with:
+          separator: ','
           files: |
             modules/module1
             modules/module2
@@ -30,6 +32,8 @@ jobs:
         run: |
           modules=(module1 module2 module3 s3)
           modified_files=${{ steps.changed-files.outputs.all_modified_files }}
+
+          echo $modified_files
 
           for module in ${modules[@]}; do
               if [[ ${modified_files[*]} =~ $module ]]; then
