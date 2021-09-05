@@ -41,14 +41,14 @@ jobs:
               fi
           done
 
-          echo "::set-output name=matrix::$(printf '%s\n' "${changed_files[@]}" | jq -nR '{"include": [inputs | {"module": .}]}')"
-          echo $(printf '%s\n' "${changed_files[@]}" | jq -nR '{"include": [inputs | {"module": .}]}')
+          echo "::set-output name=matrix::$(printf '%s\n' "${changed_files[@]}" | jq -cnR '[inputs | select(length>0)]')"
 
   analyse_module:
     runs-on: ubuntu-latest
     needs: check_files
     strategy:
-      matrix: ${{ needs.check_files.outputs.matrix }}
+      matrix:
+        module: ${{ fromJson(needs.check_files.outputs.matrix) }}
 
     steps:
       - name: echo module
