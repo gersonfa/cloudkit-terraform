@@ -41,8 +41,8 @@ jobs:
               fi
           done
 
-          echo "::set-output name=matrix::$(printf '%s\n' "${changed_files[@]}" | jq -nR '{include: [inputs | {module: .}]}')"
-          echo $(printf '%s\n' "${changed_files[@]}" | jq -nR '{include: [inputs | {module: .}]}')
+          echo "::set-output name=matrix::'$(printf '%s\n' "${changed_files[@]}" | jq -nR '{"include": [inputs | {"module": .}]}')'"
+          echo $(printf '%s\n' "${changed_files[@]}" | jq -nR '{"include": [inputs | {"module": .}]}')
 
   analyse_module:
     runs-on: ubuntu-latest
