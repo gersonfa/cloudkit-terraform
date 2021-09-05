@@ -49,7 +49,7 @@ jobs:
     needs: check_files
     strategy:
       matrix:
-        modules: ${{needs.check_files.outputs.changed_modules}}
+        modules: ${{needs.check_files.outputs.changed_modules2}}
 
     steps:
       - name: echo module
