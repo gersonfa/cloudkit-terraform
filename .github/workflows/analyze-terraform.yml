@@ -37,7 +37,7 @@ jobs:
               fi
           done
 
-          echo "::set-output name=matrix::{\"module\":$(printf '%s\n' "${changed_files[@]}" | jq -R . | jq -s .)"
+          echo "::set-output name=matrix::{\"module\":$(printf '%s\n' "${changed_files[@]}" | jq -R . | jq -s .)}"
 
   analyse_module:
     runs-on: ubuntu-latest
