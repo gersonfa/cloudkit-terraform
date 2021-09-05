@@ -51,8 +51,7 @@ jobs:
         module: ${{ fromJson(needs.check_files.outputs.matrix) }}
 
     steps:
-      - name: echo module
-        run: echo ${{ matrix.module }}
+      - uses: actions/checkout@v2
 
       - name: Run Checkov
         id: checkov
