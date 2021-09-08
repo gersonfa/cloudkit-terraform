@@ -4,9 +4,6 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - test
 
 jobs:
   check_files:
@@ -61,4 +58,4 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: modules/${{ matrix.module }}
-          config_file: ${{ matrix.module }}/configure.yml
+          config_file: modules/${{ matrix.module }}/configure.yml
