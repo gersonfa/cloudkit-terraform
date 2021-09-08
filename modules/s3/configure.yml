@@ -1,0 +1,15 @@
+check:
+  - CKV_AWS_20
+  - CKV_AWS_93
+  - CKV_AWS_18
+skip-check:
+  - CKV_AWS_2
+  - CKV_AWS_3
+download-external-modules: false
+evaluate-variables: true
+framework: terraform
+no-guide: false
+output: cli
+quiet: true
+skip-fixes: false
+soft-fail: false
