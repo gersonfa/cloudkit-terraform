@@ -61,4 +61,4 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: modules/${{ matrix.module }}
-          config_file: ${{ matrix.module }}.yml
+          config_file: ${{ matrix.module }}/configure.yml
