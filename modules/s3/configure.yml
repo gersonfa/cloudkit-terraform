@@ -1,6 +1,7 @@
 check:
   - CKV_AWS_20
   - CKV_AWS_93
+  - CKV_AWS_18
 skip-check:
   - CKV_AWS_2
   - CKV_AWS_3
