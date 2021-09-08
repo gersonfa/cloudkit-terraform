@@ -12,4 +12,4 @@ no-guide: false
 output: cli
 quiet: true
 skip-fixes: false
-soft-fail: true
+soft-fail: false
