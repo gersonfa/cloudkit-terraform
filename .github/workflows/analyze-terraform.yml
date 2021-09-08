@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - test
 
 jobs:
   check_files:
@@ -58,7 +61,4 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: modules/${{ matrix.module }}
-          soft_fail: true # optional: do not return an error code if there are failed checks
-          framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
-          output_format: json # optional: the output format, one of: cli, json, junitxml, github_failed_only
-          log_level: WARNING # optional: set log level. Default WARNING
+          config_file: ${{ matrix.module }}.yml
